@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://raselofficial.com/products.json",
+  "title": "Product Schema",
+  "description": "A product from raselofficial.com",
+  "type": "object",
+  "properties": {
+    "productId": {
+      "title": "Product Id",
+      "description": "The unique id of the product",
+      "type": "integer",
+      "default": 1
+    },
+    "productName": {
+      "title": "Product Name",
+      "description": "The name of the product",
+      "type": "string"
+    },
+    "price": {
+      "title": "Price",
+      "description": "The price of the product",
+      "type": "number",
+      "default": 0.0,
+      "exclusiveMinimum": 0.0
+    },
+    "tags": {
+      "title": "Tags",
+      "description": "A list of tags",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "dimension": {
+      "type": "object",
+      "properties": {
+        "length": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        }
+      },
+      "required": ["length", "width", "height"]
+    },
+    "reviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "rating": {
+            "type": "number"
+          }
+        },
+        "required": ["username", "rating"]
+      }
+    }
+  },
+  "required": ["productId", "productName", "price"]
+}
